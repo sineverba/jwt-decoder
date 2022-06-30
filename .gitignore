@@ -1,0 +1,10 @@
+coverage
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
+.npmrc
+.nyc_output
+.scannerwork/
+data/
