@@ -1,5 +1,7 @@
 'use strict';
 
+const { Buffer } = require("buffer");
+
 /**
  * 
  * Parse a JWT as object
