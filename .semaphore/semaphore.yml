@@ -61,6 +61,6 @@ blocks:
 
 promotions:
   - name: Deploy
-    pipeline_file: deploy.yml
+    pipeline_file: build-deploy.yml
     auto_promote:
       when: "tag =~ '.*'"
