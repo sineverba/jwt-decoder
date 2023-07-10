@@ -1,6 +1,6 @@
 {
   "name": "@sineverba/jwt-decoder",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Decodes a JWT Token as an object",
   "main": "index.js",
   "repository": {
@@ -29,7 +29,7 @@
     "chai": "^4.3.7",
     "coveralls": "^3.1.1",
     "mocha": "^10.2.0",
-    "npm-check-updates": "^16.6.2",
+    "npm-check-updates": "^16.10.15",
     "nyc": "^15.1.0"
   },
   "dependencies": {
