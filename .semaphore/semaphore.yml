@@ -7,6 +7,9 @@ agent:
     os_image: ubuntu2004
 
 global_job_config:
+  env_vars:
+    - name: SONARSCANNER_VERSION
+      value: 4.8.0
   secrets:
     - name: ACCESS_TOKENS
 
@@ -57,7 +60,13 @@ blocks:
       - name: Sonarcloud
         commands:
           - npm run cover
-          - docker run --rm -e SONAR_HOST_URL="https://sonarcloud.io" -e SONAR_LOGIN=$SONAR_TOKEN -v "/home/semaphore/jwt-decoder:/usr/src" sonarsource/sonar-scanner-cli:4.6
+          - >-
+            docker run 
+            --rm 
+            -e SONAR_HOST_URL="https://sonarcloud.io" 
+            -e SONAR_LOGIN=$SONAR_TOKEN 
+            -v $PWD:/usr/src 
+            sonarsource/sonar-scanner-cli:$SONARSCANNER_VERSION
 
 promotions:
   - name: Deploy
