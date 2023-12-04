@@ -1,4 +1,4 @@
-SONARSCANNER_VERSION=4.8.0
+SONARSCANNER_VERSION=5.0.1
 
 sonar:
 	docker run --rm -it \
