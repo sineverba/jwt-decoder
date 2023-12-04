@@ -18,13 +18,12 @@ JWT decoder
 ## Usage
 
 ```js
-// Import module
-let parseJwt = require('@sineverba/jwt-decoder');
-// Or...
-// import parseJwt from 'jwt-decoder'
+import { parseJwt } from "@sineverba/jwt-decoder";
+const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
-let parsed = parseJwt("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c");
-console.log(parsed); // returns {"sub": "1234567890", "name": "John Doe", "iat": 1516239022};
+const parsedToken = parseJwt(token);
+console.log(parsedToken); // returns {"sub": "1234567890", "name": "John Doe", "iat": 1516239022};
 ```
 
 ## Tests
