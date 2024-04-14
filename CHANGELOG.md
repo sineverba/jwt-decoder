@@ -1,5 +1,6 @@
 # Next version
 + Move to typescript
++ Add test_report
 
 ## 1.3.0
 + Upgrade dependencies
