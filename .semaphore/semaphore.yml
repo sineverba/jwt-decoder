@@ -44,11 +44,18 @@ blocks:
             - npx jest
         - name: Prettier
           commands:
-            - rm -r node_modules/
+            - rm -rf node_modules/
             - nvm install
             - nvm use
             - npm ci
             - npm run prettier
+
+        - name: Test report
+          commands:
+            - sem-version node $NODE_VERSION
+            - npx jest
+            - '[[ -f ./.test_report/junit.xml ]] && test-results publish ./.test_report/junit.xml'
+            - test-results gen-pipeline-report
 
   - name: Coverage
     skip:

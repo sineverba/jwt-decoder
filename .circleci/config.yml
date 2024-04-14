@@ -18,7 +18,8 @@ jobs:
       - run:
           name: "Run test"
           command: npx jest
-
+      - store_test_results:
+          path: ./.test_report
 workflows:
   testing:
     jobs:
