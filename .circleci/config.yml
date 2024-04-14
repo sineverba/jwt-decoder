@@ -3,15 +3,23 @@ jobs:
 
   test:
     docker:
-      - image: cimg/node:20.10.0
+      - image: cimg/node:20.12.2
+    environment:
+      NPM_VERSION: 10.5.2
 
     steps:
       - checkout
-      - run: npm ci
-      - run: npm run test
+      - run:
+          name: "Setup NPM version"
+          command: npm install npm@${NPM_VERSION}
+      - run:
+          name: "Setup project"
+          command: npm ci
+      - run:
+          name: "Run test"
+          command: npx jest
 
 workflows:
-  version: 2
-  test:
+  testing:
     jobs:
       - test
