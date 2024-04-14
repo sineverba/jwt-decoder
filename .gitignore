@@ -1,10 +1,13 @@
+.test_report/
 coverage
 node_modules
 build
 npm-debug.log
+junit.xml
 .env
 .DS_Store
-.npmrc
 .nyc_output
 .scannerwork/
 data/
+lib/
+dist/

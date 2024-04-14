@@ -1,6 +1,6 @@
 version: v1.0
 
-name: Test and build
+name: Build and test
 agent:
   machine:
     type: e1-standard-2
@@ -41,7 +41,22 @@ blocks:
               values: [ "14", "16", "18", "20" ]
           commands:
             - sem-version node $NODE_VERSION
-            - npm run test
+            - npx jest
+        - name: Prettier
+          commands:
+            - rm -rf node_modules/
+            - nvm install
+            - nvm use
+            - npm ci
+            - npm run prettier
+
+        - name: Test report
+          commands:
+            - nvm install
+            - nvm use
+            - npx jest
+            - '[[ -f ./.test_report/junit.xml ]] && test-results publish ./.test_report/junit.xml'
+            - test-results gen-pipeline-report
 
   - name: Coverage
     skip:
@@ -51,25 +66,24 @@ blocks:
         commands:
           - checkout
           - cache restore
+          - npm run coverage
       jobs:
       - name: Coverage
         commands:
           - export COVERALLS_REPO_TOKEN=$COVERALLS_JWT_DECODER
-          - npm run cover
           - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
       - name: Sonarcloud
         commands:
-          - npm run cover
           - >-
             docker run 
-            --rm 
-            -e SONAR_HOST_URL="https://sonarcloud.io" 
-            -e SONAR_LOGIN=$SONAR_TOKEN 
-            -v $PWD:/usr/src 
+            --rm
+            -e SONAR_HOST_URL="https://sonarcloud.io"
+            -e SONAR_TOKEN=$SONAR_TOKEN
+            -v $PWD:/usr/src
             sonarsource/sonar-scanner-cli:$SONARSCANNER_VERSION
 
 promotions:
   - name: Deploy
     pipeline_file: build-deploy.yml
     auto_promote:
-      when: "tag =~ '.*'"
+      when: "result = 'passed' and tag =~ '.*'"
