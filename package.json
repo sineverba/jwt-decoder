@@ -1,6 +1,6 @@
 {
   "name": "@sineverba/jwt-decoder",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Decodes a JWT Token as an object",
   "files": [
     "dist/**/*"
@@ -8,7 +8,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sineverba/npm-pkg-getboolean.git"
+    "url": "https://github.com/sineverba/jwt-decoder"
   },
   "scripts": {
     "build": "tsc",
