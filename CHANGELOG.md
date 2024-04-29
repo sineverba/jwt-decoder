@@ -1,4 +1,7 @@
-# 1.4.0
+# 1.4.1
++ Fix missing parsing token in certain conditions
+
+## 1.4.0
 + Move to typescript
 + Add test_report
 
