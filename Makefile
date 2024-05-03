@@ -15,4 +15,4 @@ upgrade:
 	npx ncu -u
 	npx update-browserslist-db@latest
 	npm install
-	npm audit fix
+	npm audit fix || exit 0;
