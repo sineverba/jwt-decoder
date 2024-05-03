@@ -1,4 +1,7 @@
-# 1.4.1
+# 1.4.2
++ Fix missing call to Buffer in certain conditions
+
+## 1.4.1
 + Fix missing parsing token in certain conditions
 
 ## 1.4.0
