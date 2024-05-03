@@ -3,7 +3,7 @@
  * @param {string} token The JWT string to parse.
  * @returns {object | null} The payload of the JWT as a JavaScript object, or null if parsing fails.
  */
-const { Buffer } = require("buffer");
+const Buffer = require("buffer/").Buffer;
 
 export const parseJwt = (token: string): object | null => {
   try {
